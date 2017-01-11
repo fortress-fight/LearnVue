@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./../js/vue.js" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app-3" v-bind:title='attr' v-if = 'onOff'>
+        {{message}}
+    </div>
+    <script type="text/javascript">
+        var app3 = new Vue({
+            el: '#app-3',
+            data: {
+                message: 'hello',
+                attr: 'title',
+                onOff: true
+            }
+        })
+    </script>
+</body>
+</html>

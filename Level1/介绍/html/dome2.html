@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./../js/vue.js" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app-2" v-bind:title='attr'>
+        {{message}}
+    </div>
+    <script type="text/javascript">
+        var app2 =  new Vue({
+            el: '#app-2',
+            data: {
+                message: 'hello vue',
+                attr: new Date()
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./../../vue.js" charset="utf-8"></script>
+</head>
+<body>
+    <input type="text" name="" id="text" v-focus>
+    <script type="text/javascript">
+        Vue.directive('focus', {
+            inserted: function (el, blinding) {
+                el.focus()
+                console.log(blinding);
+            }
+        })
+        var vm = new Vue ({
+            el: '#text'
+        })
+    </script>
+</body>
+</html>

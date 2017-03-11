@@ -8,10 +8,11 @@
 所有的组件都是其实都是被扩展的vue实例
 
 ### 1.2 属性和方法
+
 [DOME1](./html/dome1.html)
 每一个vue实例都会代理其 data 对象的所有属性
 
-```
+```html
 <script type="text/javascript">
     var vm = new Vue({
         data: {
@@ -26,8 +27,9 @@
 
 >注：vm.$data 就是存在vue实例中真实的data；
 
-Vue 实例暴露了一些有用的实例属性与方法。这些属性与方法都有前缀 $，以便与代理的 data 属性区分。例如：
-```
+Vue 实例暴露了一些有用的实例属性与方法。这些属性与方法都有前缀 $，以便与代理的 data 属性区分。也可以当做参数传入vue的实例中（这种情况不需要前缀）例如：
+
+```html
 <div id="dome1"></div>
 <script type="text/javascript">
     var vm = new Vue({
@@ -44,15 +46,14 @@ Vue 实例暴露了一些有用的实例属性与方法。这些属性与方法�
     })
 </script>
 ```
->注
-1. 不要在实例属性或者回调函数中（如 vm.$watch('a', newVal => this.myMethod())）使用箭头函数。因为箭头函数绑定父上下文，所以 this 不会像预想的一样是 Vue 实例，而是 this.myMethod 未被定义。
 
+注: 不要在实例属性或者回调函数中（如 vm.$watch('a', newVal => this.myMethod())）使用箭头函数。因为箭头函数绑定父上下文，所以 this 不会像预想的一样是 Vue 实例，而是 this.myMethod 未被定义。
 
 ### 1.3 实例的声明周期
 
 一个vue实例被创建的时候都要经历一系列的创建过程，在这个过程中实例会产生一些生命周期的钩子，例如`created`就会在实例被创建的时候触发
 
-```
+```html
 <div id="dome2">
     {{message}}
 </div>
@@ -69,7 +70,27 @@ Vue 实例暴露了一些有用的实例属性与方法。这些属性与方法�
 </script>
 ```
 
-实例的生命周期还包括：mounted、 updated 、destroyed
+实例的生命周期还包括：mounted(安装好)、 updated(更新好) 、destroyed(销毁后)
 
 生命周期图示：
 ![生命周期](./img/生命周期.png)
+
+
+### 1.4 详解生命周期
+
+文章：
+[VUE-生命周期](http://www.cnblogs.com/fly_dragon/p/6220273.html)
+
+VUE 提供了一系列的生命周期的事件钩子，辅助我们进行对整个Vue实例生成、编译、挂载、销毁等过程进行js控制。
+
+Vue实例有一个完整的生命周期，也就是从开始创建、初始化数据、编译模板、挂载Dom、渲染→更新→渲染、卸载等一系列过程，我们称这是Vue的生命周期。通俗说就是Vue实例从创建到销毁的过程，就是生命周期。
+
+在这些事件响应方法中的this直接指向的是vue的实例。
+
+![VUE-生命周期](./img/生命周期2.png);
+
+简单的说一下：
+
+图中红色框内的就是可以挂载的钩子，共6个：
+
+创建前后，插入前后，更新前后，销毁前后

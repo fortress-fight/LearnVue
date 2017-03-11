@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
     <script src='../../../vue.js'></script>
 </head>
+
 <body>
     <div id="to-do-list">
         <input type="text" v-model="newList" @keyup.enter='sb' placeholder="add a item">
         <ul>
-            <li
-                is='todoItem'
-                :title="item"
-                v-for="(item, index) in list"
-            >{{index+1}} {{item}}</li>
+            <li is='todoItem' :title="item" v-for="(item, index) in list" v-on:remove="list.splice(index,1)">{{index+1}} {{item}}</li>
         </ul>
     </div>
     <script type="text/javascript">
@@ -22,23 +20,24 @@
             template: '\
                 <li>\
                     {{title}}\
-                    <button>remove</button>\
+                    <button @click= "$emit(\'remove\')">remove</button>\
                 </li>\
             '
         })
-        var vm = new Vue ({
+        var vm = new Vue({
             el: '#to-do-list',
             data: {
-                newList:'',
-                list: [1,2,3,4]
+                newList: '',
+                list: [1, 2, 3, 4]
             },
             methods: {
-                sb(){
+                sb() {
                     this.list.push(this.newList);
-                    this.newList=''
+                    this.newList = ''
                 }
             }
         })
     </script>
 </body>
+
 </html>

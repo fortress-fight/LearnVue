@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../../../vue.js" charset="utf-8"></script>
+</head>
+<body>
+    <div id="dome5">
+        <button @click='handleClick'>点击 打印 event对象</button>
+    </div>
+    <script type="text/javascript">
+        var vm = new Vue({
+            el: '#dome5',
+            data: {
+                counter: 0
+            },
+            methods: {
+                handleClick(ev){
+                    console.log(ev);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
     <script src="../../../vue.js" charset="utf-8"></script>
 </head>
+
 <body>
     <div id="dome18">
-        <my-awesome-list :items = "items">
+        <my-awesome-list>
             <template name="item" scope="props">
-                <li class="my-fancy-item">{{ props.text }}</li>
+                <li class="my-fancy-item">{{ props.con }}</li>
             </template>
         </my-awesome-list>
     </div>
@@ -18,16 +20,17 @@
             template: '<ul>\
                 <slot\
                     v-for = "item in items"\
-                    :text = "item.text"\
+                    :con = "item.text"\
                 >\
                 </slot>\
             </ul>',
-            data: function () {
+            data: function() {
                 return {
-                    items: [
-                        {text:'list1'},
-                        {text:'list2'}
-                    ]
+                    items: [{
+                        text: 'list1'
+                    }, {
+                        text: 'list2'
+                    }]
                 }
             }
         })
@@ -35,12 +38,14 @@
         var vm = new Vue({
             el: '#dome18',
             data: {
-                items: [
-                    {text:1},
-                    {text:2}
-                ]
+                items: [{
+                    text: 1
+                }, {
+                    text: 2
+                }]
             }
         })
     </script>
 </body>
+
 </html>

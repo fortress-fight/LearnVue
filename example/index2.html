@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{totalCount}}</p>
+        <template-app v-on:emit-increment="countTotal"></template-app>
+        <template-app v-on:emit-increment="countTotal"></template-app>
+        <template-app v-on:click.native="sayno"></template-app>
+    </div>
+    <script>
+        Vue.component('template-app', {
+            template: '<button v-on:click="addCount">{{count}}</button>',
+            data: function() {
+                return {
+                    count: 0
+                }
+            },
+            methods: {
+                addCount: function() {
+                    this.count++;
+                    this.$emit('emit-increment');
+                }
+            }
+        })
+        var app = new Vue({
+            el: "#app ",
+            data: {
+                totalCount: 0
+            },
+            methods: {
+                countTotal: function() {
+                    this.totalCount++;
+                },
+                sayno: function() {
+                    alert(1)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

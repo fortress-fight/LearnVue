@@ -1,0 +1,17 @@
+{
+  "name": "learn-vue",
+  "version": "1.0.0",
+  "description": "learn-vue-router",
+  "main": "main.js",
+  "dependencies": {
+    "vue": "^2.1.10"
+  },
+  "devDependencies": {
+    "webpack": "^2.2.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

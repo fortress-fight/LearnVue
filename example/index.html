@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 500px;
+            border: 1px solid black;
+        }
+        
+        .red {
+            height: 100px;
+            background: red;
+        }
+        
+        .blue {
+            height: 100px;
+            background: blue;
+        }
+    </style>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app" v-bind:title="data" v-if="onoff">
+        {{message}}
+        <p v-for="(item,index) in note">{{item.test}}</p>
+        <input type="text" name="" value="" v-model="str">
+        <button type="button" v-on:click="addItem">点击添加输入的内容</button>
+        <span>你输入的是：{{str}}</span>
+        <ul>
+            <list-name v-for="(item,index) in note" v-bind:list="item" v-once></list-name>
+        </ul>
+        <section v-html="html"></section>
+        <div>
+            {{ 'message' | big }}
+        </div>
+        <div>
+            这里是计算属性方式添加的(将message翻转)：{{computedMessage}}
+        </div>
+        <div :class="style?'red':'blue'" :style="style1">
+            根据属性选择相应的class 为真的时候为蓝色 为假的时候是红色,有两种方式 第一种：{blue:style, red:!style} 第二种：[style?'red':'blue'] 第三种：数组 第四种：对象
+        </div>
+        <button type="button" @click="changeColor">改变颜色</button>
+        <div>
+            <if v-bind:m="message"></if>
+        </div>
+    </div>
+
+    <script>
+        Vue.component('list-name', {
+            props: ['list'],
+            template: "<li>{{list.test}}</li>"
+        });
+        Vue.component('if', {
+            props: ['m'],
+            template: `<div v-if="Math.random()>0.5">
+                            {{m}}
+                        </div><div v-else>
+                            这里走了else，就不要渲染了
+                        </div>`
+        });
+        Vue.filter('big', function(val) {
+            return val.toUpperCase()
+        });
+        var app = new Vue({
+            el: "#app ",
+            data: {
+                message: 'this is a vue template',
+                onoff: true,
+                data: new Date(),
+                note: [{
+                    test: 'name'
+                }, {
+                    test: 'name2'
+                }, {
+                    test: 'name3'
+                }],
+                style: true,
+                str: "",
+                html: "<em>这里是通过 v-html 加入的文本</em>",
+                style1: {
+                    display: 'flex'
+                }
+            },
+            watch: {
+                str: function(str, oldstr) {
+                    alert(str + oldstr)
+                }
+            },
+            computed: {
+                computedMessage() {
+                    return this.message.split("").reverse().join("");
+                }
+            },
+            methods: {
+                addItem: function() {
+                    this.note.push({
+                        test: this.str
+                    })
+                },
+                changeColor: function() {
+                    this.style = !this.style
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

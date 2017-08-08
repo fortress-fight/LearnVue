@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+    <!-- dome1 -->
+    <!--<div id="app">
+        {{message}}
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue'
+            }
+        })
+    </script>-->
+
+    <!-- dome2 -->
+    <!--<div id="app" v-bind:title="date" v-if="show">
+        {{message}}
+        <span v-for="item in list">
+            {{item.infor}}
+        </span>
+        <div v-on:click="hi">
+            {{message}}
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue',
+                date: new Date(),
+                show: true,
+                list: [
+                    {infor: 1},
+                    {infor: 1},
+                    {infor: 1},
+                    {infor: 1},
+                    {infor: 1}
+                ]
+            },
+            methods: {
+                hi: function (){
+                    alert(1)
+                }
+            }
+        })
+    </script>-->
+    <!--dome3-->
+    <!--<div id="app">
+        <p>{{message}}</p>
+        <input type="" v-model="message" name="" value="">
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'wa haha'
+            }
+        })
+    </script>-->
+    <!-- dome4 -->
+    <div id="app">
+        <todo v-for="item in list" v-bind:key="item.id" v-bind:con="item"></todo>
+    </div>
+    <script>
+        Vue.component('todo', {
+            props: ['con'],
+            template: '<li>{{con.txt}}</li>'
+        })
+        var app = new Vue({
+            el: '#app',
+            data: {
+                list: [
+                    {id:0, txt: 1},
+                    {id:0, txt: 1},
+                    {id:0, txt: 1},
+                    {id:0, txt: 1},
+                    {id:0, txt: 1},
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

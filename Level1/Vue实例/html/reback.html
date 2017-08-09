@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{message}}
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: 'this is a apple'
+            },
+            beforeCreate: function (){
+                console.log('new 一开始但是没有传入数据 beforeCreate')
+            },
+            created: function (){
+                console.log('拿到数据并且完成事件绑定 created')
+            },
+            beforeMount: function (){
+                console.log('挂载DOM前 beforeMount')
+            },
+            mounted: function (){
+                console.log('挂载DOM后 mounted 如果没有在初始化的时候表明挂载的 DOM 就会观察是否具有 app.$mount(el)')
+                this.message = "this is a org"
+            },
+            beforeUpdate: function (){
+                console.log('数据发生变化但是还没有完成页面刷新 beforeUpdate')
+            },
+            updated: function (){
+                console.log('数据发生变化并且完成页面刷新 updated')
+            },
+            beforeDestroy: function (){
+                console.log('如果调用了 app.$destroy() 在还没有真正卸载之前会触发 beforeDestroy 事件')
+            },
+            destroyed: function (){
+                console.log('完成卸载 整个生命周期结束 destroyed')
+            }
+        })
+        app.$watch ('message', function (){
+            console.log('数据已经发生了修改');
+        })
+    </script>
+</body>
+</html>

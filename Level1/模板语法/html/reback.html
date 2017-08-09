@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+    <!-- dome1 -->
+    <!-- <div id="app" v-html="message">
+        这个是文本{{message}}
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: "<em>这个是em标签</em>"
+            }
+        })
+    </script> -->
+     <!-- dome2  -->
+     <!-- <div id="app" :class="activeId != id, activeId]">
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                activeId: '1',
+                id: '1',
+            }
+        })
+    </script>  -->
+     <div id="app">
+            {{message | big}}
+        </div>
+        <script>
+            Vue.filter('big', function(val) {
+                return val.toUpperCase()
+            })
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    message: "this is learn for filter"
+                }
+            })
+        </script>
+</body>
+</html>

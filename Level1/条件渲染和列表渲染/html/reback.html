@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../../vue.js"></script>
+</head>
+
+<body>
+    <!-- <div id="app">
+        <h1 v-if="onOff">{{message}}</h1>
+        <em v-else>sorry</em>
+        <template v-if = "onOff">
+            <div>hi</div>
+            <div>I</div>
+            <div>SEE</div>
+            <div>YOU</div>
+        </template>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                message: "this is a message",
+                onOff: true
+            }
+        })
+    </script> -->
+    <ul id="dome4">
+            <template v-for="(item, key, index) in items">
+                <li>{{name}}-{{index}}-{{key}}-{{item}}</li>
+            </template>
+        </ul>
+        <script type="text/javascript">
+            var vm = new Vue ({
+                el: '#dome4',
+                data: {
+                    name: 'infor',
+                    items: {
+                        name: 'ff',
+                        age: 24,
+                        job: 'student'
+                    }
+                }
+            })
+        </script>
+</body>
+
+</html>

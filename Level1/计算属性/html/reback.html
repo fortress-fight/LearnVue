@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../../vue.js"></script>
+</head>
+
+<body>
+    <!-- <div id="app">
+        <div>{{m}}</div>
+        <div>{{message}}</div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                m: 'onOff',
+                message: 'this is a app'
+            },
+            methods: {
+                getM: function (){
+                    return Date.now()
+                }
+            },
+            computed: {
+                getN: function (){
+                    return this.message.split('').reverse().join('');
+                }
+            },
+            watch: {
+                m: function (val){
+                    this.message = this.message.split('').reverse().join('');
+                }
+            }
+        })
+    </script> -->
+    <div id="app">
+        {{message}}
+        {{relateMessage}}
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message: 'this is a message',
+                // relateMessage: 'this is a relateMessage'
+            },
+            computed: {
+                relateMessage: function (){
+                    return 'message has change'
+                }
+            },
+            watch: {
+                message: function (val) {
+                    this.relateMessage = 'Oh message is change'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

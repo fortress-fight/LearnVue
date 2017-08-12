@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src='../../../vue.js'></script>
+</head>
+<body>
+    <!-- <div id="app">
+        <my-app bs="true" :key="1" :mes="message"></my-app>
+    </div>
+    <script>
+        Vue.component ('my-app', {
+            props: ['mes'],
+            template: "<div>hi {{mes}}</div>"
+        })
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'this is a apple'
+            }
+        });0
+    </script> -->
+    <!-- <div id="app">
+        <p>{{bar}}</p>
+        <my-app :foo.sync="bar"></my-app>
+    </div>
+    <script>
+        Vue.component ('my-app', {
+            props: ['foo'],
+            template: "<div @click='upData'>{{foo}}</div>",
+            methods: {
+                upData () {
+                    console.log(1);
+                    this.$emit('update:foo', 'change')
+                }
+            }
+        });
+        var app = new Vue({
+            el: "#app",
+            data: {
+                bar: 'noChange'
+            },
+            methods: {
+                upData () {
+                    console.log(0);
+                }
+            }
+        })
+    </script> -->
+    <div id="app">
+        <p>{{bar}}</p>
+        <my-app v-model="bar"></my-app>
+        <!-- v-model 相当于 :value="bar" 和 @input="bar=$event.target.value"  -->
+    </div>
+    <script>
+        Vue.component ('my-app', {
+            props: ['value'],
+            template:  '\
+                <span>\
+                    <input\
+                        ref="input"\
+                        v-bind:value="value"\
+                        v-on:input="updateValue($event.target.value)"\
+                    >\
+                </span>\
+            ',
+            methods: {
+                updateValue (val) {
+                    console.log(1);
+                    this.$emit('input', val)
+                }
+            }
+        });
+        var app = new Vue({
+            el: "#app",
+            data: {
+                bar: 'noChange'
+            },
+            methods: {
+                upData () {
+                    console.log(0);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

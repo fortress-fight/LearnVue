@@ -13,10 +13,11 @@
     </div>
     <script type="text/javascript">
         Vue.component('my-component', {
-            template: '<span :me2="message">{{message}}</span>',
+            props: ['me1'],
+            template: '<span :me2="sonMes">{{sonMes}}</span>',
             data: function () {
                 return {
-                    message: 'son'
+                    sonMes: 'son'
                 }
             }
 

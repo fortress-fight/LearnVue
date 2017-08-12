@@ -10,7 +10,7 @@
 <body>
     <div id="dome18">
         <my-awesome-list>
-            <template name="item" scope="props">
+            <template slot="item" scope="props">
                 <li class="my-fancy-item">{{ props.con }}</li>
             </template>
         </my-awesome-list>
@@ -19,6 +19,7 @@
         Vue.component('my-awesome-list', {
             template: '<ul>\
                 <slot\
+                    name = "item"\
                     v-for = "item in items"\
                     :con = "item.text"\
                 >\

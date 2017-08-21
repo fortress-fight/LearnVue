@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,25 +7,21 @@
     <title>Document</title>
     <script src="../../../vue.js"></script>
 </head>
-
 <body>
     <div id="app">
-        <my-template></my-template>
+        <my-template>这个是模板内部的文字，可以通过 this.$slots.default 来获取</my-template>
     </div>
     <script>
         Vue.component('my-template', {
-            render: function(createElement) {
-                return createElement("div",[
-                    '先写一些文字',
-                    createElement('em', 'one'),
-                    createElement('h1', 'two'),
-                ])
+            render: function (createElement) {
+                return createElement('em', this.$slots.default)
             }
-        })
-        var app = new Vue({
-            el: "#app"
-        })
+        });
+
+        var vm = new Vue({
+            el: '#app'
+        });
+
     </script>
 </body>
-
 </html>

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,29 +7,24 @@
     <title>Document</title>
     <script src="../../../vue.js"></script>
 </head>
-
 <body>
     <div id="app">
-        <my-template :level="1">Hello world!</my-template>
+        
+        <my-template :level='3'>Hello 这里是模板</my-template>
     </div>
     <script>
         Vue.component('my-template', {
             render: function(createElement) {
-                return createElement(
-                    'h' + this.level, // 使用的标签名称
-                    this.$slots.default // 子组件队列
-                )
-            },
-            props: {
-                level: {
-                    type: Number
-                }
+                var tep = createElement('p', 'this is a tep');  
+                return createElement("div",[
+                    tep,
+                    tep
+                ])
             }
-        });
-        var app = new Vue({
-            el: "#app"
+        })
+        var vm = new Vue({
+            el: '#app'
         })
     </script>
 </body>
-
 </html>

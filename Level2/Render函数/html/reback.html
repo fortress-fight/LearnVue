@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        
+        <my-template :level='3'>Hello 这里是模板</my-template>
+    </div>
+    <script type="text/x-template" id="replace-template">
+        <h1 v-if="level === 1">
+            <slot></slot>
+        </h1>
+        <h2 v-else-if="level === 2">
+            <slot></slot>
+        </h2>
+        <h3 v-else-if="level === 3">
+            <slot></slot>
+        </h3>
+        <h4 v-else>
+            <slot></slot>
+        </h4>
+    </script>
+    <script>
+        Vue.component('my-template', {
+            template: '#replace-template',
+            props: {
+                level: {
+                    type: Number,
+                    required: true
+                }
+            }
+        });
+        var vm = new Vue({
+            el: '#app',
+            data: {}
+        })
+    </script>
+</body>
+</html>
